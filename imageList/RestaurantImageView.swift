@@ -11,6 +11,7 @@ import SwiftUI
 
 struct ImageView: View {
     @State private var showOptions : Bool = false
+    @State private var showError : Bool = false
     var image : String
     var title : String
     var type : ResType
@@ -36,11 +37,26 @@ struct ImageView: View {
             } .padding(.horizontal)
             
         } .onTapGesture {
-            showOptions.toggle()        }
-        .confirmationDialog("What do you want", isPresented: $showOptions, titleVisibility: .visible) {
+            showOptions.toggle()
+        }
+        .confirmationDialog(
+            "What do you want",
+            isPresented: $showOptions,
+            titleVisibility: .visible
+        ) {
             Button("Mark as favourite") {
                 print("Added to favourites")
             }
+            
+            Button("Show direction") {
+                self.showError.toggle()
+            }
+        }
+        .alert("Error", isPresented: $showError) {
+            Button("Ok") {}
+            
+        } message: {
+         Text("Sorry is not possible to show the direction")
         }
     }
     
