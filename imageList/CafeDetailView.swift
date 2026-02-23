@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CafeDetailView: View {
-    var cafeDetails : CafeModel
+  @Binding var cafeDetails : CafeModel
+   
+    
     private let imageHeight: CGFloat = 380
     var body: some View {
         
@@ -39,14 +41,20 @@ struct CafeDetailView: View {
                     VStack {
                         HStack{
                             Spacer()
-                           
-                                Image(systemName: "heart.fill")
+                            
+                            Button {
+                                cafeDetails.isFavorite.toggle()
+                            } label: {
+                                Image(systemName: cafeDetails.isFavorite ? "heart.fill" : "heart")
                                 .font(.title2)
                                 .foregroundStyle(.white)
                                 .padding(.top, 40)
                                 .padding(.trailing,20)
+                            }
+                                
                            
                         }
+                      
                         Spacer()
                     }
                     .frame(height: imageHeight)
@@ -56,21 +64,21 @@ struct CafeDetailView: View {
                 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 10){
-                        Text("Searching for great breakfast eaters and coffe? This place is for you. We open at 6:30 every morning and close at 10:00 every evening. We have a great selection of breakfast options to suit all tastes. From classic pancakes and waffles to gourmet options like smoked salmon and avocado toast, we have something for everyone.")
+                        Text(cafeDetails.cafeDescription)
                             .padding(.bottom)
                    
                         HStack(alignment: .top, spacing: 40) {
                             VStack(alignment: .leading, spacing: 6){
                                 Text("Address")
                                     .font(.system(.title2,weight: .bold))
-                                Text("Baki şəhəri, Xətai rayonu, Məzahir Rüstımov küçəsi 15")
+                                Text(cafeDetails.cafeAddress)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                            
                             VStack(alignment: .leading, spacing: 6){
                                 Text("Phone")
                                     .font(.system(.title2,weight: .bold))
-                                Text("0554322828")
+                                Text(cafeDetails.cafePhone)
                             }
                            
                         }
@@ -93,9 +101,9 @@ struct CafeDetailView: View {
 }
         struct CafeDetailView_Previews: PreviewProvider {
             static var previews: some View {
-                CafeDetailView(cafeDetails: CafeModel(image: "cafe1", title: "Cafe Daedend", type: .Pub, location: "aa", isFavorite: false))
+                CafeDetailView(cafeDetails: .constant(CafeModel(image: "cafe1", title: "Cafe Daedend", type: .Pub, location: "aa", isFavorite: false, cafeDescription: "Searching for great breakfast eaters and coffe? This place is for you. We open at 6:30 every morning and close at 10:00 every evening. We have a great selection of breakfast options to suit all tastes. From classic pancakes and waffles to gourmet options like smoked salmon and avocado toast, we have something for everyone", cafeAddress: "baki ahmadli sabuncu bakixanov razin sulh kucesi", cafePhone: "0554321821")))
                 
-                CafeDetailView(cafeDetails: CafeModel(image: "cafe1", title: "", type: .Pub, location: "aa", isFavorite: false))
+                CafeDetailView(cafeDetails: .constant(CafeModel(image: "cafe1", title: "Cafe Daedend", type: .Pub, location: "aa", isFavorite: false, cafeDescription: "", cafeAddress: "", cafePhone: "")))
                     .preferredColorScheme(.dark)
             }
         }

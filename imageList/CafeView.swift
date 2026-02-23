@@ -19,7 +19,7 @@ struct CafeView : View {
         VStack(alignment: .leading , spacing: 10 ) {
             Image(cafe.image)
                 .resizable()
-                .scaledToFill()
+                .aspectRatio(contentMode: .fill)
                 .frame(maxWidth: .infinity)
                 .frame(height: 200)
                 .clipped()

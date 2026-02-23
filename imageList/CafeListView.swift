@@ -9,20 +9,19 @@ import SwiftUI
 
 struct CafeListView: View {
     
-  @State var restaurants = [
-        CafeModel(image: "cafe1", title: "cafe1", type: CafeType.Bar, location: "Baku",isFavorite: false),
-        CafeModel(image: "cafe2", title: "cafe2", type: CafeType.Bar, location: "Quba",isFavorite: false),
-        CafeModel(image: "cafe3", title: "cafe3", type: CafeType.Bar, location: "Qax",isFavorite: false),
-    ]
+  @State var restaurants = [cafeFirst, cafeSecond, cafeThird]
     
     var body: some View {
         NavigationStack {
             List {
                 
                 ForEach($restaurants) { $cafe in
-                    NavigationLink(destination: CafeDetailView(cafeDetails: cafe)) {
+                    NavigationLink(destination: CafeDetailView(cafeDetails: $cafe)) {
                         CafeView(cafe: $cafe)
+                         
                     }
+                    .buttonStyle(.plain)
+                  
             
                     
                         .swipeActions(edge: .leading, allowsFullSwipe: false) {
