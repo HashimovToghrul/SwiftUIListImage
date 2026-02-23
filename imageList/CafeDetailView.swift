@@ -101,9 +101,9 @@ struct CafeDetailView: View {
 }
         struct CafeDetailView_Previews: PreviewProvider {
             static var previews: some View {
-                CafeDetailView(cafeDetails: .constant(CafeModel(image: "cafe1", title: "Cafe Daedend", type: .Pub, location: "aa", isFavorite: false, cafeDescription: "Searching for great breakfast eaters and coffe? This place is for you. We open at 6:30 every morning and close at 10:00 every evening. We have a great selection of breakfast options to suit all tastes. From classic pancakes and waffles to gourmet options like smoked salmon and avocado toast, we have something for everyone", cafeAddress: "baki ahmadli sabuncu bakixanov razin sulh kucesi", cafePhone: "0554321821")))
+                CafeDetailView(cafeDetails: .constant(cafeFirst))
                 
-                CafeDetailView(cafeDetails: .constant(CafeModel(image: "cafe1", title: "Cafe Daedend", type: .Pub, location: "aa", isFavorite: false, cafeDescription: "", cafeAddress: "", cafePhone: "")))
+                CafeDetailView(cafeDetails: .constant(cafeFirst))
                     .preferredColorScheme(.dark)
             }
         }
