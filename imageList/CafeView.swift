@@ -20,9 +20,9 @@ struct CafeView : View {
             Image(cafe.image)
                 .resizable()
                 .scaledToFill()
+                .frame(maxWidth: .infinity)
                 .frame(height: 200)
-                    .frame(maxWidth: .infinity)
-                    .clipped()
+                .clipped()
                 .cornerRadius(20)
                 .shadow(radius: 10)
             
@@ -36,9 +36,9 @@ struct CafeView : View {
                             .foregroundStyle(.yellow)
                     } else {
                         Image(systemName: "heart")
-                            
+                        
                     }
-                 
+                    
                 }
                 Text(cafe.type.rawValue)
                     .font(.system(.title2, design: .rounded))
@@ -47,24 +47,48 @@ struct CafeView : View {
                     .foregroundStyle(.gray)
             } .padding(.horizontal)
             
-        }
-        .onTapGesture {
-            showOptions.toggle()
-        }
-        .confirmationDialog("What doyou want", isPresented: $showOptions, titleVisibility: .visible) {
-            Button(cafe.isFavorite ? "Remove favorite" : "Mark as favorite") {
-                    self.cafe.isFavorite.toggle()
-                }
-                Button("show menu") {
-                    showError.toggle()
+                .contextMenu {
+                    
+                    Button {
+                        cafe.isFavorite.toggle()
+                    } label: {
+                        HStack {
+                            Text(cafe.isFavorite ? "Remove favorite" : "Mark as favorite")
+                            Image(systemName: "heart")
+                        }
+                    }
+                    
+                    Button {
+                        
+                    }  label: {
+                        HStack {
+                            Text("Show menu")
+                            Image(systemName: "list.bullet")
+                        }
+                    }
+                    
+                    
                 }
             
-        }
-        .alert("Error", isPresented: $showError) {
+            //        }
+            //        .onTapGesture {
+            //            showOptions.toggle()
+            //        }
+            //        .confirmationDialog("What doyou want", isPresented: $showOptions, titleVisibility: .visible) {
+            //            Button(cafe.isFavorite ? "Remove favorite" : "Mark as favorite") {
+            //                    self.cafe.isFavorite.toggle()
+            //                }
+            //                Button("show menu") {
+            //                    showError.toggle()
+            //                }
+            //
+            //        }
+            //        .alert("Error", isPresented: $showError) {
+            //
+            //        } message: {
+            //            Text("Sorry")
+            //        }
             
-        } message: {
-            Text("Sorry")
         }
-
     }
 }
