@@ -17,7 +17,7 @@ struct CafeListView: View {
                 
                 ForEach($restaurants) { $cafe in
                     NavigationLink(destination: CafeDetailView(cafeDetails: $cafe)) {
-                        CafeView(cafe: $cafe)
+                        CafeView(cafe1: $cafe)
                          
                     }
                     .buttonStyle(.plain)
@@ -39,13 +39,17 @@ struct CafeListView: View {
                             }
                         }
                 }
+              
                 
                 .onDelete { IndexSet in
                     restaurants.remove(atOffsets: IndexSet)
                 }
-                
+                .listRowSeparator(.hidden)
             }
-            .navigationTitle("aaaaa")
+            .listStyle(.plain)
+            .listRowSeparatorTint(Color.blue)
+              
+            .navigationTitle("Wolt Cafe")
         }
        
         }

@@ -7,12 +7,26 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		CA2143C02F52DAFB00CFA7FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAEA76612F41A67200FF98F5 /* imageList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imageList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CA2143C42F52DBE800CFA7FD /* Exceptions for "imageList" folder in "imageList" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CAEA76602F41A67200FF98F5 /* imageList */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CAEA76632F41A67200FF98F5 /* imageList */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CA2143C42F52DBE800CFA7FD /* Exceptions for "imageList" folder in "imageList" target */,
+			);
 			path = imageList;
 			sourceTree = "<group>";
 		};
@@ -32,6 +46,7 @@
 		CAEA76582F41A67200FF98F5 = {
 			isa = PBXGroup;
 			children = (
+				CA2143C02F52DAFB00CFA7FD /* Info.plist */,
 				CAEA76632F41A67200FF98F5 /* imageList */,
 				CAEA76622F41A67200FF98F5 /* Products */,
 			);
@@ -256,6 +271,7 @@
 				DEVELOPMENT_TEAM = 2NFPHKT488;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = imageList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,6 +304,7 @@
 				DEVELOPMENT_TEAM = 2NFPHKT488;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = imageList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

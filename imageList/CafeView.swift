@@ -13,13 +13,13 @@ struct CafeView : View {
     @State private var showOptions = false
     @State private var showError = false
     
-    @Binding var cafe : CafeModel
+    @Binding var cafe1 : CafeModel
     
     var body : some View {
         VStack(alignment: .leading , spacing: 10 ) {
-            Image(cafe.image)
+            Image(cafe1.image)
                 .resizable()
-                .aspectRatio(contentMode: .fill)
+                
                 .frame(maxWidth: .infinity)
                 .frame(height: 200)
                 .clipped()
@@ -28,10 +28,10 @@ struct CafeView : View {
             
             VStack(alignment: .leading) {
                 HStack {
-                    Text(cafe.title)
-                        .font(.system(.title, design: .rounded))
+                    Text(cafe1.title)
+                        .font(.system(.largeTitle, design: .rounded))
                     Spacer()
-                    if cafe.isFavorite {
+                    if cafe1.isFavorite {
                         Image(systemName: "heart.fill")
                             .foregroundStyle(.yellow)
                     } else {
@@ -40,9 +40,9 @@ struct CafeView : View {
                     }
                     
                 }
-                Text(cafe.type.rawValue)
+                Text(cafe1.type.rawValue)
                     .font(.system(.title2, design: .rounded))
-                Text(cafe.location)
+                Text(cafe1.location)
                     .font(.system(.title3, design: .rounded))
                     .foregroundStyle(.gray)
             } .padding(.horizontal)
@@ -50,10 +50,10 @@ struct CafeView : View {
                 .contextMenu {
                     
                     Button {
-                        cafe.isFavorite.toggle()
+                        cafe1.isFavorite.toggle()
                     } label: {
                         HStack {
-                            Text(cafe.isFavorite ? "Remove favorite" : "Mark as favorite")
+                            Text(cafe1.isFavorite ? "Remove favorite" : "Mark as favorite")
                             Image(systemName: "heart")
                         }
                     }

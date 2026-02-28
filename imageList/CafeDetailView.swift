@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CafeDetailView: View {
   @Binding var cafeDetails : CafeModel
-   
+    @Environment(\.dismiss) var dismiss
     
     private let imageHeight: CGFloat = 380
     var body: some View {
@@ -26,9 +26,10 @@ struct CafeDetailView: View {
                     
                     VStack(alignment:.leading, spacing: 8) {
                         Text(cafeDetails.title)
-                            .font(.system(.largeTitle, weight: .bold))
+                          //  .font(.system(.largeTitle, weight: .bold))
+                            .font(.custom("Pacifico-Regular", size: 40))
                         Text(cafeDetails.type.rawValue)
-                            .font(.system(.title, weight: .bold))
+                            .font(.system(.title2, weight: .bold))
                             .padding(.horizontal, 12)
                             .padding(.vertical, 6)
                             .background(.black.opacity(0.6))
@@ -93,8 +94,23 @@ struct CafeDetailView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(.black)
                 
+            } .ignoresSafeArea(edges: .top)
+        
+        // CustomBackButton
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading ) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        HStack {
+                            Image(systemName: "chevron.left" )
+                            Text("Geriye")
+                        }
+                    }
+                }
             }
-            .ignoresSafeArea(edges: .top)
+           
         
         
     }
