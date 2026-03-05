@@ -33,7 +33,7 @@ struct CafeView : View {
                     Spacer()
                     if cafe1.isFavorite {
                         Image(systemName: "heart.fill")
-                            .foregroundStyle(.yellow)
+                            .foregroundStyle(Color.brand)
                     } else {
                         Image(systemName: "heart")
                         

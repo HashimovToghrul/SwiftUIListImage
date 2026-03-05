@@ -22,8 +22,6 @@ struct CafeListView: View {
                     }
                     .buttonStyle(.plain)
                   
-            
-                    
                         .swipeActions(edge: .leading, allowsFullSwipe: false) {
                             Button {
                                 //todo

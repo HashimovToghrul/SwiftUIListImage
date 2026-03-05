@@ -8,57 +8,50 @@
 import SwiftUI
 
 struct CafeDetailView: View {
-  @Binding var cafeDetails : CafeModel
+    @Binding var cafeDetails : CafeModel
     @Environment(\.dismiss) var dismiss
     
     private let imageHeight: CGFloat = 380
     var body: some View {
         
             VStack(spacing: 0) {
-                ZStack(alignment: .bottomLeading) {
+                ZStack {
                     
                     Image("cafe1")
                         .resizable()
                         .scaledToFill()
-                        .frame(maxWidth: 410)
-                          .frame(height: imageHeight)
+                        .frame(minWidth: 0 ,maxWidth: .infinity)
+                        .frame(height: imageHeight)
                         .clipped()
-                    
-                    VStack(alignment:.leading, spacing: 8) {
-                        Text(cafeDetails.title)
-                          //  .font(.system(.largeTitle, weight: .bold))
-                            .font(.custom("Pacifico-Regular", size: 40))
-                        Text(cafeDetails.type.rawValue)
-                            .font(.system(.title2, weight: .bold))
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(.black.opacity(0.6))
-                            .clipShape(.capsule)
-                          
-                    }
-                    .foregroundStyle(.white)
-                    .padding()
-                    
                     VStack {
-                        HStack{
-                            Spacer()
-                            
-                            Button {
+                        Button {
                                 cafeDetails.isFavorite.toggle()
-                            } label: {
+                                } label: {
                                 Image(systemName: cafeDetails.isFavorite ? "heart.fill" : "heart")
-                                .font(.title2)
+                                .font(.title)
                                 .foregroundStyle(.white)
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topTrailing)
+                                .padding()
                                 .padding(.top, 40)
-                                .padding(.trailing,20)
-                            }
-                                
-                           
+                                }
+                                                        
+                        VStack(alignment:.leading, spacing: 5) {
+                            Text(cafeDetails.title)
+                            //  .font(.system(.largeTitle, weight: .bold))
+                                .font(.custom("Pacifico-Regular", size: 40))
+                            Text(cafeDetails.type.rawValue)
+                                .font(.system(.title2, weight: .bold))
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                                .background(.black.opacity(0.6))
+                                .cornerRadius(20)
+                            
                         }
-                      
-                        Spacer()
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottomLeading)
+                        .foregroundStyle(.white)
+                        .padding()
+                        
                     }
-                    .frame(height: imageHeight)
                     
                 }
                 .frame(height: imageHeight)
@@ -81,14 +74,8 @@ struct CafeDetailView: View {
                                     .font(.system(.title2,weight: .bold))
                                 Text(cafeDetails.cafePhone)
                             }
-                           
                         }
-                        
-                        
-                        
-                        
                     }.foregroundStyle(.white)
-                        
                 }
                 .padding()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -110,9 +97,6 @@ struct CafeDetailView: View {
                     }
                 }
             }
-           
-        
-        
     }
 }
         struct CafeDetailView_Previews: PreviewProvider {
